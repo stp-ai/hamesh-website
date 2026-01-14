@@ -120,6 +120,44 @@ function staggerAnimation() {
 
 staggerAnimation();
 
+// ===== WhatsApp Form Submission =====
+function sendToWhatsApp(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('form-name').value;
+    const phone = document.getElementById('form-phone').value;
+    const email = document.getElementById('form-email').value;
+    const interest = document.getElementById('form-interest').value;
+    const message = document.getElementById('form-message').value;
+
+    // Build the WhatsApp message
+    let whatsappMessage = `שלום! פנייה חדשה מהאתר 🌟\n\n`;
+    whatsappMessage += `*שם:* ${name}\n`;
+    whatsappMessage += `*טלפון:* ${phone}\n`;
+    whatsappMessage += `*אימייל:* ${email}\n`;
+    whatsappMessage += `*מתעניין/ת ב:* ${interest}\n`;
+
+    if (message) {
+        whatsappMessage += `\n*הודעה:*\n${message}`;
+    }
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // WhatsApp number (without + or spaces)
+    const whatsappNumber = '972509945351';
+
+    // Open WhatsApp with the pre-filled message
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+
+    // Optional: Reset the form
+    document.getElementById('contact-form').reset();
+
+    // Show success feedback
+    alert('תודה! מיד תועברו לוואטסאפ לשליחת ההודעה.');
+}
+
 // ===== Console Welcome Message =====
 console.log('%c חמ"ש - חיבורים מייצרים שינוי ', 'background: linear-gradient(135deg, #1a365d, #6b46c1); color: white; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 5px;');
 console.log('%c https://hamesh.co.il ', 'color: #f6ad55; font-size: 12px;');
