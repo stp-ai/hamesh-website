@@ -64,8 +64,24 @@
                 animation-duration: 0.01ms !important;
                 animation-delay: 0ms !important;
                 transition-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
             html { scroll-behavior: auto; }
+            .hero-word { opacity: 1 !important; transform: none !important; }
+            .scroll-progress { display: none !important; }
+            #particleCanvas { display: none !important; }
+        }
+
+        /* ========== SCROLL PROGRESS BAR ========== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), #FB923C, var(--color-secondary));
+            z-index: 10000;
+            transition: width 0.05s linear;
         }
 
         /* ========== TYPOGRAPHY ========== */
@@ -120,6 +136,21 @@
             border-radius: 2px;
         }
 
+        /* ========== NOISE OVERLAY ========== */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+
+        .noise-overlay svg {
+            width: 100%;
+            height: 100%;
+        }
+
         /* ========== ANIMATIONS ========== */
         @keyframes float {
             0%, 100% { transform: translateY(0) scale(1); }
@@ -142,6 +173,50 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        @keyframes morph-blob {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+            75% { border-radius: 60% 40% 60% 30% / 40% 50% 60% 50%; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        @keyframes dot-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        @keyframes btn-shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes draw-check {
+            0% { stroke-dashoffset: 60; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes draw-circle {
+            0% { stroke-dashoffset: 190; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes word-reveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -160,6 +235,24 @@
         .reveal-delay-5 { transition-delay: 0.5s; }
         .reveal-delay-6 { transition-delay: 0.6s; }
         .reveal-delay-7 { transition-delay: 0.7s; }
+
+        /* ========== BUTTON SHINE EFFECT ========== */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
+        }
 
         /* ========== STICKY NAV ========== */
         .nav {
@@ -214,6 +307,8 @@
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(-10px);
+            position: relative;
+            overflow: hidden;
         }
 
         .nav.scrolled .nav-cta {
@@ -225,6 +320,25 @@
             background: #EA6C0B;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        /* ========== SVG WAVE DIVIDERS ========== */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave-divider-lg {
+            height: 80px;
         }
 
         /* ========== HERO ========== */
@@ -244,11 +358,22 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 600px 600px at 20% 30%, rgba(59, 130, 246, 0.25), transparent),
-                radial-gradient(ellipse 500px 500px at 80% 70%, rgba(139, 92, 246, 0.2), transparent),
-                radial-gradient(ellipse 400px 400px at 50% 50%, rgba(249, 115, 22, 0.08), transparent);
-            animation: gradient-shift 12s ease-in-out infinite;
+                radial-gradient(ellipse 700px 700px at 15% 25%, rgba(59, 130, 246, 0.3), transparent),
+                radial-gradient(ellipse 600px 600px at 85% 75%, rgba(139, 92, 246, 0.25), transparent),
+                radial-gradient(ellipse 500px 500px at 50% 50%, rgba(249, 115, 22, 0.1), transparent),
+                radial-gradient(ellipse 300px 300px at 70% 20%, rgba(59, 130, 246, 0.15), transparent),
+                radial-gradient(ellipse 250px 250px at 30% 80%, rgba(139, 92, 246, 0.12), transparent);
+            animation: gradient-shift 16s ease-in-out infinite;
             background-size: 200% 200%;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .orb {
@@ -293,16 +418,26 @@
         }
 
         .hero-logo {
-            width: 80px;
+            width: 100px;
             height: auto;
             margin-bottom: var(--space-lg);
             animation: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 30px rgba(139, 92, 246, 0.3)) drop-shadow(0 0 45px rgba(249, 115, 22, 0.15));
         }
 
         .hero h1 {
             color: var(--color-white);
             margin-bottom: var(--space-lg);
-            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        }
+
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-word.revealed {
+            animation: word-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .hero h1 .highlight {
@@ -317,8 +452,16 @@
             font-size: clamp(1.05rem, 2vw, 1.25rem);
             font-weight: 300;
             max-width: 600px;
-            margin: 0 auto var(--space-xl);
-            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+            margin: 0 auto var(--space-lg);
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.6s both;
+        }
+
+        .hero-urgency {
+            color: var(--color-accent);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.8s both;
         }
 
         .hero-cta {
@@ -336,7 +479,21 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 2s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
         }
 
         .hero-cta:hover {
@@ -350,7 +507,7 @@
             gap: var(--space-md);
             flex-wrap: wrap;
             margin-top: var(--space-xl);
-            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1s both;
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 2.2s both;
         }
 
         .pill {
@@ -373,17 +530,11 @@
             flex-shrink: 0;
         }
 
-        /* ========== GLOWING DIVIDER ========== */
-        .glow-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
-            opacity: 0.3;
-        }
-
         /* ========== PROBLEM SECTION ========== */
         .problem {
             padding: var(--space-3xl) 0;
             background: var(--color-white);
+            position: relative;
         }
 
         .problem-header {
@@ -400,6 +551,21 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--space-lg);
+            position: relative;
+        }
+
+        /* Decorative SVG circles behind problem grid */
+        .problem-grid::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.04) 0%, rgba(249, 115, 22, 0.03) 30%, rgba(249, 115, 22, 0.01) 60%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -414,6 +580,8 @@
             border: 1px solid rgba(139, 92, 246, 0.08);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
+            transform-style: preserve-3d;
+            will-change: transform;
         }
 
         .problem-card::before {
@@ -431,11 +599,6 @@
             transition: opacity 0.4s ease;
         }
 
-        .problem-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
-        }
-
         .problem-card:hover::before { opacity: 1; }
 
         .problem-icon {
@@ -447,6 +610,11 @@
             justify-content: center;
             border-radius: 12px;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            transition: background 0.4s ease;
+        }
+
+        .problem-card:hover .problem-icon {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(249, 115, 22, 0.08));
         }
 
         .problem-icon svg {
@@ -455,6 +623,11 @@
             stroke: var(--color-primary);
             stroke-width: 1.5;
             fill: none;
+            transition: stroke 0.4s ease;
+        }
+
+        .problem-card:hover .problem-icon svg {
+            stroke: var(--color-accent);
         }
 
         .problem-card h3 {
@@ -473,6 +646,20 @@
             background: var(--color-dark);
             position: relative;
             overflow: hidden;
+        }
+
+        .morph-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.06));
+            animation: morph-blob 12s ease-in-out infinite;
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .transformation-content {
@@ -502,10 +689,11 @@
         .glass-card {
             padding: var(--space-xl);
             border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 20px 60px rgba(0,0,0,0.2);
         }
 
         .glass-card h3 {
@@ -549,6 +737,7 @@
             stroke: var(--color-accent);
             stroke-width: 1.5;
             fill: none;
+            animation: breathe 2.5s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
@@ -570,28 +759,42 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-lg);
+            position: relative;
+        }
+
+        /* Dashed connecting line between circles */
+        .steps-connector {
+            position: absolute;
+            top: 50px;
+            right: calc(16.66% + 50px);
+            left: calc(16.66% + 50px);
+            height: 2px;
+            border-top: 2px dashed rgba(139, 92, 246, 0.25);
+            z-index: 0;
         }
 
         @media (max-width: 768px) {
             .steps-row { grid-template-columns: 1fr; }
+            .steps-connector { display: none; }
         }
 
-        .step-item { text-align: center; }
+        .step-item { text-align: center; position: relative; z-index: 1; }
 
         .step-circle {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             margin: 0 auto var(--space-lg);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--color-white);
         }
 
         .step-circle svg.ring {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
         }
 
         .step-circle .ring-bg {
@@ -605,8 +808,8 @@
             stroke: url(#ringGradient);
             stroke-width: 3;
             stroke-linecap: round;
-            stroke-dasharray: 226;
-            stroke-dashoffset: 226;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
             transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
             transform: rotate(-90deg);
             transform-origin: center;
@@ -616,8 +819,12 @@
             stroke-dashoffset: 0;
         }
 
+        .step-item.visible .step-circle {
+            animation: pulse-ring 2s ease-out 0.5s;
+        }
+
         .step-num {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
             background: var(--gradient-brand);
             -webkit-background-clip: text;
@@ -627,6 +834,21 @@
 
         .step-item h3 { color: var(--color-dark); margin-bottom: var(--space-sm); }
         .step-item p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+        /* ========== TRUST LINE ========== */
+        .trust-line {
+            padding: var(--space-xl) 0;
+            background: var(--color-surface);
+            text-align: center;
+        }
+
+        .trust-line p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 500;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
         /* ========== DELIVERABLES ========== */
         .deliverables {
@@ -651,13 +873,32 @@
             border-radius: var(--radius-lg);
             background: var(--color-white);
             border: 1px solid rgba(139, 92, 246, 0.06);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deliverable-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: var(--gradient-brand);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .deliverable-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(139, 92, 246, 0.08);
         }
+
+        .deliverable-item:hover::before { opacity: 1; }
 
         .deliverable-icon {
             width: 56px;
@@ -668,6 +909,11 @@
             justify-content: center;
             border-radius: 16px;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .deliverable-item:hover .deliverable-icon {
+            transform: scale(1.1);
         }
 
         .deliverable-icon svg {
@@ -717,6 +963,14 @@
             position: relative;
             padding-right: 70px;
             padding-bottom: var(--space-xl);
+            transition: all 0.3s ease;
+            border-radius: var(--radius-md);
+            padding-left: var(--space-md);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(-4px);
+            background: rgba(255,255,255,0.02);
         }
 
         .timeline-dot {
@@ -732,6 +986,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .timeline-dot::after {
@@ -740,6 +995,10 @@
             height: 8px;
             border-radius: 50%;
             background: var(--color-primary);
+        }
+
+        .timeline-item.visible .timeline-dot::after {
+            animation: dot-pulse 2s ease-out 0.3s;
         }
 
         .timeline-num {
@@ -808,6 +1067,7 @@
         .fit-card {
             padding: var(--space-xl);
             border-radius: var(--radius-lg);
+            transform-style: preserve-3d;
         }
 
         .fit-yes {
@@ -851,10 +1111,48 @@
         .fit-yes ul li svg { stroke: #34D399; }
         .fit-no ul li svg { stroke: #F87171; }
 
+        /* Fit list staggered reveal */
+        .fit-card ul li {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .fit-card.visible ul li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fit-card.visible ul li:nth-child(1) { transition-delay: 0.1s; }
+        .fit-card.visible ul li:nth-child(2) { transition-delay: 0.2s; }
+        .fit-card.visible ul li:nth-child(3) { transition-delay: 0.3s; }
+        .fit-card.visible ul li:nth-child(4) { transition-delay: 0.4s; }
+
         /* ========== FORM SECTION ========== */
         .form-section {
             padding: var(--space-3xl) 0;
             background: var(--color-surface-alt);
+        }
+
+        .form-price-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .form-price-header .price-line {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 900;
+            color: var(--color-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-price-header .price-line .price-amount {
+            color: var(--color-accent);
+        }
+
+        .form-price-header .price-sub {
+            color: var(--color-text-muted);
+            font-size: 1rem;
         }
 
         .form-wrapper {
@@ -921,9 +1219,9 @@
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: var(--color-primary);
+            border-color: var(--color-secondary);
             background: var(--color-white);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.1);
         }
 
         .form-group textarea {
@@ -943,6 +1241,20 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-submit::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
         }
 
         .form-submit:hover {
@@ -973,6 +1285,24 @@
             margin-bottom: var(--space-md);
         }
 
+        .form-success .check-circle {
+            stroke-dasharray: 190;
+            stroke-dashoffset: 190;
+        }
+
+        .form-success .check-mark {
+            stroke-dasharray: 60;
+            stroke-dashoffset: 60;
+        }
+
+        .form-success.show .check-circle {
+            animation: draw-circle 0.8s ease-out 0.2s forwards;
+        }
+
+        .form-success.show .check-mark {
+            animation: draw-check 0.5s ease-out 0.8s forwards;
+        }
+
         .form-success h3 { color: var(--color-dark); margin-bottom: var(--space-sm); }
         .form-success p { color: var(--color-text-muted); }
 
@@ -994,6 +1324,30 @@
 
         .faq-item {
             border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+            position: relative;
+            transition: background 0.3s ease;
+            border-radius: var(--radius-sm);
+        }
+
+        .faq-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-brand);
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .faq-item.open {
+            background: rgba(139, 92, 246, 0.03);
+        }
+
+        .faq-item.open::after {
+            opacity: 1;
         }
 
         .faq-question {
@@ -1001,7 +1355,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: var(--space-lg) 0;
+            padding: var(--space-lg);
+            padding-right: var(--space-lg);
             background: none;
             border: none;
             font-family: var(--font-main);
@@ -1038,7 +1393,12 @@
             padding-bottom: var(--space-lg);
         }
 
-        .faq-answer p { color: var(--color-text-muted); font-size: 0.95rem; }
+        .faq-answer p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            padding-inline-start: var(--space-lg);
+            padding-inline-end: var(--space-lg);
+        }
 
         /* ========== FINAL CTA + FOOTER ========== */
         .final-cta {
@@ -1068,8 +1428,15 @@
             font-weight: 900;
             color: var(--color-white);
             max-width: 700px;
-            margin: 0 auto var(--space-xl);
+            margin: 0 auto var(--space-lg);
             line-height: 1.3;
+        }
+
+        .final-urgency {
+            color: var(--color-accent);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
         }
 
         .final-cta a {
@@ -1085,6 +1452,20 @@
             border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta a::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
         }
 
         .final-cta a:hover {
@@ -1093,16 +1474,16 @@
         }
 
         .footer {
-            padding: var(--space-xl) 0;
+            padding: var(--space-xl) var(--space-lg);
             background: var(--color-darker);
             text-align: center;
         }
 
         .footer-logo {
-            width: 48px;
+            max-width: 200px;
             height: auto;
             margin-bottom: var(--space-md);
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .footer p {
@@ -1119,33 +1500,49 @@
                 padding-bottom: 80px;
             }
 
-            .hero-logo { width: 60px; }
+            .hero-logo { width: 80px; }
             .hero-pills { gap: var(--space-sm); }
             .container { padding: 0 var(--space-md); }
 
             .problem, .transformation, .steps, .deliverables, .modules, .fit, .form-section, .faq, .final-cta {
                 padding: var(--space-2xl) 0;
             }
+
+            .wave-divider { height: 40px; }
+            .wave-divider-lg { height: 50px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo { width: 90px; }
+            .morph-blob { width: 300px; height: 300px; }
         }
     </style>
 </head>
 <body>
 
-<!-- SVG Definitions -->
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- SVG Definitions (hidden) -->
 <svg style="position:absolute;width:0;height:0">
     <defs>
         <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#3B82F6"/>
             <stop offset="100%" stop-color="#8B5CF6"/>
         </linearGradient>
+        <!-- Noise filter for texture overlays -->
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
     </defs>
 </svg>
 
 <!-- ========== STICKY NAV ========== -->
 <nav class="nav" id="nav">
     <div class="container nav-inner">
-        <img src="../assets/logo-white.png" alt="חמש" class="nav-logo" loading="lazy">
-        <a href="#form" class="nav-cta">
+        <img src="../assets/logo-color.png" alt="חמש" class="nav-logo" loading="lazy">
+        <a href="#form" class="nav-cta btn-shine">
             השאירו פרטים
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1154,19 +1551,38 @@
 
 <!-- ========== HERO ========== -->
 <section class="hero">
+    <!-- Noise Overlay -->
+    <div class="noise-overlay">
+        <svg width="100%" height="100%"><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <div class="hero-content">
-        <img src="../assets/logo-white.png" alt="חמש - חיבורים מייצרים שינוי" class="hero-logo">
+        <img src="../assets/logo-dark-bg.png" alt="חמש - חיבורים מייצרים שינוי" class="hero-logo">
 
-        <h1>התוכן שלך לא צריך<br><span class="highlight">להרגיש כמו שיווק.</span></h1>
+        <h1 id="heroTitle">
+            <span class="hero-word">התוכן</span>
+            <span class="hero-word">שלך</span>
+            <span class="hero-word">לא</span>
+            <span class="hero-word">צריך</span>
+            <br>
+            <span class="hero-word highlight">להרגיש</span>
+            <span class="hero-word highlight">כמו</span>
+            <span class="hero-word highlight">שיווק.</span>
+        </h1>
 
         <p class="hero-sub">תהליך סדנאתי ליצירת תוכן אותנטי.<br>7 מפגשים. עוזר AI אישי. קבוצה קטנה.</p>
 
+        <p class="hero-urgency">הקבוצה הקרובה מתחילה במרץ</p>
+
         <a href="#form" class="hero-cta">
-            רוצה לשמוע עוד
+            רוצה לשמור מקום?
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
@@ -1191,7 +1607,12 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Hero → Problem (white fill) -->
+<div class="wave-divider wave-divider-lg" style="background:var(--color-dark);margin-top:-1px">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="#FFFFFF"/>
+    </svg>
+</div>
 
 <!-- ========== PROBLEM ========== -->
 <section class="problem">
@@ -1202,7 +1623,7 @@
         </div>
 
         <div class="problem-grid">
-            <div class="problem-card reveal reveal-delay-1">
+            <div class="problem-card reveal reveal-delay-1" data-tilt>
                 <div class="problem-icon">
                     <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                 </div>
@@ -1210,7 +1631,7 @@
                 <p>ומשהו נתקע. לא בגלל שאת לא יודעת. בגלל שמה שיוצא לא נשמע כמוך.</p>
             </div>
 
-            <div class="problem-card reveal reveal-delay-2">
+            <div class="problem-card reveal reveal-delay-2" data-tilt>
                 <div class="problem-icon">
                     <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
                 </div>
@@ -1218,7 +1639,7 @@
                 <p>צריך לכתוב פוסט, אבל מה שיוצא נשמע כמו כל אחת אחרת. אז את עוצרת. ועוד שבוע עובר.</p>
             </div>
 
-            <div class="problem-card reveal reveal-delay-3">
+            <div class="problem-card reveal reveal-delay-3" data-tilt>
                 <div class="problem-icon">
                     <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
@@ -1226,7 +1647,7 @@
                 <p>את צריכה לדחוף את עצמך במקום להרגיש שאת פשוט מציעה עזרה. זה לא מרגיש כמוך.</p>
             </div>
 
-            <div class="problem-card reveal reveal-delay-4">
+            <div class="problem-card reveal reveal-delay-4" data-tilt>
                 <div class="problem-icon">
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                 </div>
@@ -1237,10 +1658,23 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Problem → Transformation (dark fill) -->
+<div class="wave-divider wave-divider-lg" style="background:#FFFFFF;margin-top:-1px">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C360,70 720,0 1080,50 C1260,65 1360,30 1440,20 L1440,80 L0,80 Z" fill="#1E1145"/>
+    </svg>
+</div>
 
 <!-- ========== TRANSFORMATION ========== -->
 <section class="transformation">
+    <!-- Noise Overlay -->
+    <div class="noise-overlay">
+        <svg width="100%" height="100%"><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+    </div>
+
+    <!-- Morphing Blob -->
+    <div class="morph-blob"></div>
+
     <div class="orb" style="width:200px;height:200px;background:rgba(59,130,246,0.1);top:20%;left:10%;animation:float 9s ease-in-out infinite"></div>
     <div class="orb" style="width:150px;height:150px;background:rgba(139,92,246,0.08);bottom:15%;right:10%;animation:float 11s ease-in-out infinite 3s"></div>
 
@@ -1278,7 +1712,12 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Transformation → Steps (white fill) -->
+<div class="wave-divider" style="background:var(--color-dark);margin-top:-1px">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C180,60 360,0 540,30 C720,60 900,10 1080,30 C1260,50 1380,15 1440,30 L1440,60 L0,60 Z" fill="#FFFFFF"/>
+    </svg>
+</div>
 
 <!-- ========== STEPS ========== -->
 <section class="steps">
@@ -1289,9 +1728,12 @@
         </div>
 
         <div class="steps-row">
+            <!-- Dashed connector line -->
+            <div class="steps-connector"></div>
+
             <div class="step-item reveal reveal-delay-1">
                 <div class="step-circle">
-                    <svg class="ring" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-progress" cx="40" cy="40" r="36"/></svg>
+                    <svg class="ring" viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="45"/><circle class="ring-progress" cx="50" cy="50" r="45"/></svg>
                     <span class="step-num">1</span>
                 </div>
                 <h3>מגדירים</h3>
@@ -1300,7 +1742,7 @@
 
             <div class="step-item reveal reveal-delay-2">
                 <div class="step-circle">
-                    <svg class="ring" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-progress" cx="40" cy="40" r="36"/></svg>
+                    <svg class="ring" viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="45"/><circle class="ring-progress" cx="50" cy="50" r="45"/></svg>
                     <span class="step-num">2</span>
                 </div>
                 <h3>מחברים</h3>
@@ -1309,7 +1751,7 @@
 
             <div class="step-item reveal reveal-delay-3">
                 <div class="step-circle">
-                    <svg class="ring" viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-progress" cx="40" cy="40" r="36"/></svg>
+                    <svg class="ring" viewBox="0 0 100 100"><circle class="ring-bg" cx="50" cy="50" r="45"/><circle class="ring-progress" cx="50" cy="50" r="45"/></svg>
                     <span class="step-num">3</span>
                 </div>
                 <h3>יוצרים</h3>
@@ -1319,7 +1761,26 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Steps → Trust Line (surface fill) -->
+<div class="wave-divider" style="background:#FFFFFF;margin-top:-1px">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C480,0 960,60 1440,20 L1440,60 L0,60 Z" fill="#EDE9FE"/>
+    </svg>
+</div>
+
+<!-- ========== TRUST LINE ========== -->
+<section class="trust-line">
+    <div class="container">
+        <p class="reveal">התהליך מבוסס על עבודה עם עשרות מטפלים ואנשי מקצוע</p>
+    </div>
+</section>
+
+<!-- Wave: Trust Line → Deliverables (surface-alt fill) -->
+<div class="wave-divider" style="background:#EDE9FE;margin-top:-1px">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 720,0 1080,40 C1260,55 1380,20 1440,30 L1440,60 L0,60 Z" fill="#F5F3FF"/>
+    </svg>
+</div>
 
 <!-- ========== DELIVERABLES ========== -->
 <section class="deliverables">
@@ -1368,10 +1829,20 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Deliverables → Modules (dark fill) -->
+<div class="wave-divider wave-divider-lg" style="background:#F5F3FF;margin-top:-1px">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,50 C200,10 400,70 600,30 C800,-10 1000,60 1200,30 C1320,15 1400,40 1440,50 L1440,80 L0,80 Z" fill="#1E1145"/>
+    </svg>
+</div>
 
 <!-- ========== MODULES ========== -->
 <section class="modules">
+    <!-- Noise Overlay -->
+    <div class="noise-overlay">
+        <svg width="100%" height="100%"><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+    </div>
+
     <div class="container">
         <div class="modules-header reveal">
             <span class="section-label" style="color:rgba(255,255,255,0.4)">7 סדנאות</span>
@@ -1439,7 +1910,12 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Modules → Fit (white fill) -->
+<div class="wave-divider wave-divider-lg" style="background:var(--color-dark);margin-top:-1px">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,60 C240,20 480,70 720,30 C960,-10 1200,60 1440,40 L1440,80 L0,80 Z" fill="#FFFFFF"/>
+    </svg>
+</div>
 
 <!-- ========== FIT ========== -->
 <section class="fit">
@@ -1450,7 +1926,7 @@
         </div>
 
         <div class="fit-grid">
-            <div class="fit-card fit-yes reveal reveal-delay-1">
+            <div class="fit-card fit-yes reveal reveal-delay-1" data-tilt-fit>
                 <h3>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                     מתאים לך אם
@@ -1478,12 +1954,23 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Fit → Form (surface-alt fill) -->
+<div class="wave-divider" style="background:#FFFFFF;margin-top:-1px">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#F5F3FF"/>
+    </svg>
+</div>
 
 <!-- ========== FORM ========== -->
 <section class="form-section" id="form">
     <div class="container">
-        <div class="form-wrapper reveal">
+        <!-- Price Header -->
+        <div class="form-price-header reveal">
+            <p class="price-line">7 מפגשים. עוזר AI אישי. <span class="price-amount">2,500 ש״ח.</span></p>
+            <p class="price-sub">בלי התחייבות. נספר לך על התהליך.</p>
+        </div>
+
+        <div class="form-wrapper reveal reveal-delay-1">
             <div class="form-header">
                 <h2>רוצה לשמוע עוד?</h2>
                 <p>השאירי פרטים ונחזור אליך עם כל המידע</p>
@@ -1515,7 +2002,7 @@
                     <textarea id="message" name="message" placeholder="אופציונלי"></textarea>
                 </div>
 
-                <input type="hidden" name="source" value="landing-page-v3">
+                <input type="hidden" name="source" value="landing-page-v4">
                 <input type="hidden" name="timestamp" id="timestamp">
 
                 <button type="submit" class="form-submit">שלחי פרטים</button>
@@ -1524,8 +2011,8 @@
 
             <div class="form-success" id="formSuccess">
                 <svg viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="30" stroke="#34D399" stroke-width="3"/>
-                    <polyline points="20 34 28 42 44 26" stroke="#34D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle class="check-circle" cx="32" cy="32" r="30" stroke="#34D399" stroke-width="3"/>
+                    <polyline class="check-mark" points="20 34 28 42 44 26" stroke="#34D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <h3>תודה!</h3>
                 <p>קיבלנו את הפרטים שלך ונחזור אליך בקרוב.</p>
@@ -1534,7 +2021,12 @@
     </div>
 </section>
 
-<div class="glow-divider"></div>
+<!-- Wave: Form → FAQ (white fill) -->
+<div class="wave-divider" style="background:#F5F3FF;margin-top:-1px">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C240,0 480,60 720,20 C960,-10 1200,50 1440,30 L1440,60 L0,60 Z" fill="#FFFFFF"/>
+    </svg>
+</div>
 
 <!-- ========== FAQ ========== -->
 <section class="faq">
@@ -1557,6 +2049,16 @@
 
             <div class="faq-item reveal reveal-delay-2">
                 <button class="faq-question">
+                    כמה זה עולה?
+                    <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <p>2,500 ש"ח לתהליך המלא. 7 מפגשים, כל החומרים, ועוזר AI אישי שממשיך ללוות אותך גם אחרי.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal reveal-delay-3">
+                <button class="faq-question">
                     מה זה עוזר AI אישי?
                     <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
@@ -1565,7 +2067,7 @@
                 </div>
             </div>
 
-            <div class="faq-item reveal reveal-delay-3">
+            <div class="faq-item reveal reveal-delay-4">
                 <button class="faq-question">
                     צריך ניסיון קודם בשיווק?
                     <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1575,7 +2077,7 @@
                 </div>
             </div>
 
-            <div class="faq-item reveal reveal-delay-4">
+            <div class="faq-item reveal reveal-delay-5">
                 <button class="faq-question">
                     מה הפורמט?
                     <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1585,7 +2087,7 @@
                 </div>
             </div>
 
-            <div class="faq-item reveal reveal-delay-5">
+            <div class="faq-item reveal reveal-delay-6">
                 <button class="faq-question">
                     אני לא טכנולוגית. ה-AI לא מפחיד?
                     <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1594,29 +2096,34 @@
                     <p>ה-AI הוא כלי פשוט שמותאם אליך. במפגש 7 נלמד להשתמש בו יחד, צעד אחרי צעד. אין צורך בידע טכני מוקדם.</p>
                 </div>
             </div>
-
-            <div class="faq-item reveal reveal-delay-6">
-                <button class="faq-question">
-                    כמה זה עולה?
-                    <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-                </button>
-                <div class="faq-answer">
-                    <p>2,500 ש"ח לתהליך המלא. 7 מפגשים, כל החומרים, ועוזר AI אישי שממשיך ללוות אותך גם אחרי.</p>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
-<!-- ========== FINAL CTA + FOOTER ========== -->
+<!-- Wave: FAQ → Final CTA (dark fill) -->
+<div class="wave-divider wave-divider-lg" style="background:#FFFFFF;margin-top:-1px">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 720,0 1080,50 C1260,65 1360,30 1440,20 L1440,80 L0,80 Z" fill="#1E1145"/>
+    </svg>
+</div>
+
+<!-- ========== FINAL CTA ========== -->
 <section class="final-cta">
+    <!-- Noise Overlay -->
+    <div class="noise-overlay">
+        <svg width="100%" height="100%"><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+    </div>
+
     <div class="container final-cta-content">
         <div class="reveal">
             <p class="final-quote">הבידול שלך כבר קיים.<br><span class="gradient-text" style="-webkit-text-fill-color:transparent">רק צריך לדעת לשדר אותו.</span></p>
         </div>
+        <div class="reveal reveal-delay-1">
+            <p class="final-urgency">מספר המקומות מוגבל</p>
+        </div>
         <div class="reveal reveal-delay-2">
             <a href="#form">
-                רוצה להתחיל
+                רוצה לשמור מקום?
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
@@ -1625,25 +2132,50 @@
 
 <footer class="footer">
     <div class="container">
-        <img src="../assets/logo-white.png" alt="חמש" class="footer-logo" loading="lazy">
+        <img src="../assets/logo-slogan-wide.png" alt="חמש - חיבורים מייצרים שינוי" class="footer-logo" loading="lazy">
         <p>חמ"ש - חיבורים מייצרים שינוי</p>
     </div>
 </footer>
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-    // Timestamp
+(function() {
+    'use strict';
+
+    // ===== Timestamp =====
     document.getElementById('timestamp').value = new Date().toISOString();
 
-    // Sticky Nav
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 80);
-    });
+    // ===== Scroll Progress Bar =====
+    var scrollProgressEl = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgressEl.style.width = progress + '%';
+    }
 
-    // Intersection Observer for reveal animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    // ===== Sticky Nav =====
+    var nav = document.getElementById('nav');
+    function handleScroll() {
+        nav.classList.toggle('scrolled', window.scrollY > 80);
+        updateScrollProgress();
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // ===== Word-by-Word Reveal (Hero H1) =====
+    var heroWords = document.querySelectorAll('.hero-word');
+    function revealWords() {
+        heroWords.forEach(function(word, i) {
+            setTimeout(function() {
+                word.classList.add('revealed');
+            }, 500 + (i * 150));
+        });
+    }
+    revealWords();
+
+    // ===== Intersection Observer for Reveals =====
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
@@ -1653,35 +2185,180 @@
         rootMargin: '0px 0px -50px 0px'
     });
 
-    document.querySelectorAll('.reveal, .step-item').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .step-item, .timeline-item, .fit-card').forEach(function(el) {
+        revealObserver.observe(el);
+    });
 
-    // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const item = btn.parentElement;
-            const wasOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // ===== 3D Card Tilt Effect =====
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function initTiltCards() {
+        if (isMobile || prefersReducedMotion) return;
+
+        var tiltCards = document.querySelectorAll('[data-tilt]');
+        tiltCards.forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = ((y - centerY) / centerY) * -6;
+                var rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // Tilt for fit-yes card only
+        var fitYesCards = document.querySelectorAll('[data-tilt-fit]');
+        fitYesCards.forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = ((y - centerY) / centerY) * -4;
+                var rotateY = ((x - centerX) / centerX) * 4;
+                card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    }
+    initTiltCards();
+
+    // ===== Canvas Particles (Hero only) =====
+    var ParticleSystem = (function() {
+        var canvas, ctx, particles, animationId, isActive;
+        var PARTICLE_COUNT = 35;
+        var CONNECTION_DISTANCE = 120;
+        var PARTICLE_COLOR = 'rgba(249, 115, 22, ';
+        var LINE_COLOR_BASE = [249, 115, 22];
+
+        function Particle() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.radius = Math.random() * 2 + 1;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
+
+        Particle.prototype.update = function() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        };
+
+        Particle.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = PARTICLE_COLOR + this.opacity + ')';
+            ctx.fill();
+        };
+
+        function drawConnections() {
+            for (var i = 0; i < particles.length; i++) {
+                for (var j = i + 1; j < particles.length; j++) {
+                    var dx = particles[i].x - particles[j].x;
+                    var dy = particles[i].y - particles[j].y;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < CONNECTION_DISTANCE) {
+                        var opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = 'rgba(' + LINE_COLOR_BASE[0] + ',' + LINE_COLOR_BASE[1] + ',' + LINE_COLOR_BASE[2] + ',' + opacity + ')';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            if (!isActive) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(function(p) {
+                p.update();
+                p.draw();
+            });
+            drawConnections();
+            animationId = requestAnimationFrame(animate);
+        }
+
+        function resize() {
+            if (!canvas) return;
+            var hero = document.querySelector('.hero');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+
+        function init() {
+            if (isMobile || prefersReducedMotion) return;
+
+            canvas = document.getElementById('particleCanvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            isActive = true;
+
+            resize();
+            particles = [];
+            for (var i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push(new Particle());
+            }
+            animate();
+
+            window.addEventListener('resize', resize);
+        }
+
+        function destroy() {
+            isActive = false;
+            if (animationId) cancelAnimationFrame(animationId);
+            window.removeEventListener('resize', resize);
+        }
+
+        return { init: init, destroy: destroy };
+    })();
+
+    ParticleSystem.init();
+
+    // ===== FAQ Accordion =====
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var item = btn.parentElement;
+            var wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
             if (!wasOpen) item.classList.add('open');
         });
     });
 
-    // Form submission
-    const form = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
+    // ===== Form Submission =====
+    var form = document.getElementById('contactForm');
+    var formSuccess = document.getElementById('formSuccess');
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        const submitBtn = form.querySelector('.form-submit');
-        const originalText = submitBtn.textContent;
+        var submitBtn = form.querySelector('.form-submit');
+        var originalText = submitBtn.textContent;
         submitBtn.textContent = 'שולח...';
         submitBtn.disabled = true;
 
         try {
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            var formData = new FormData(form);
+            var data = Object.fromEntries(formData);
 
-            const response = await fetch(form.action, {
+            var response = await fetch(form.action, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -1700,16 +2377,23 @@
         }
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // ===== Smooth Scroll for Anchor Links =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            var target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
+
+    // ===== Cleanup on page unload =====
+    window.addEventListener('beforeunload', function() {
+        ParticleSystem.destroy();
+    });
+
+})();
 </script>
 
 </body>
