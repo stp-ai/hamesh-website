@@ -1480,9 +1480,10 @@
         }
 
         .footer-logo {
-            max-width: 200px;
+            width: 56px;
             height: auto;
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-sm);
+            filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.3));
             opacity: 0.6;
         }
 
@@ -1564,7 +1565,8 @@
     <div class="orb orb-3"></div>
 
     <div class="hero-content">
-        <img src="../assets/logo-dark-bg.png" alt="חמש - חיבורים מייצרים שינוי" class="hero-logo">
+        <img src="../assets/logo-color.png" alt="חמש - חיבורים מייצרים שינוי" class="hero-logo">
+        <p class="hero-brand-name" style="color:rgba(255,255,255,0.85);font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:700;margin-top:-0.5rem;margin-bottom:var(--space-lg);animation:slide-up 1s cubic-bezier(0.16,1,0.3,1) 0.3s both;letter-spacing:0.03em;">חמ"ש - חיבורים מייצרים שינוי</p>
 
         <h1 id="heroTitle">
             <span class="hero-word">התוכן</span>
@@ -2002,7 +2004,7 @@
                     <textarea id="message" name="message" placeholder="אופציונלי"></textarea>
                 </div>
 
-                <input type="hidden" name="source" value="landing-page-v4">
+                <input type="hidden" name="source" value="landing-page-v4.1">
                 <input type="hidden" name="timestamp" id="timestamp">
 
                 <button type="submit" class="form-submit">שלחי פרטים</button>
@@ -2132,8 +2134,8 @@
 
 <footer class="footer">
     <div class="container">
-        <img src="../assets/logo-slogan-wide.png" alt="חמש - חיבורים מייצרים שינוי" class="footer-logo" loading="lazy">
-        <p>חמ"ש - חיבורים מייצרים שינוי</p>
+        <img src="../assets/logo-color.png" alt="חמש" class="footer-logo" loading="lazy">
+        <p style="color:rgba(255,255,255,0.6);font-size:1rem;font-weight:700;margin-top:0.3rem;">חמ"ש - חיבורים מייצרים שינוי</p>
     </div>
 </footer>
 
