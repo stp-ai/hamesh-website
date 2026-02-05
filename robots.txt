@@ -1,0 +1,11 @@
+# robots.txt for ha-mesh.com
+# Allow all search engines to index the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ha-mesh.com/sitemap.xml
+
+# Disallow admin/private areas (none currently)
+# Disallow: /admin/
