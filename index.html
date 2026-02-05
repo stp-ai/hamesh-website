@@ -3,475 +3,1591 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="חמ״ש - חיבורים מייצרים שינוי. סביבה להתפתחות מקצועית ואישית למטפלים, מאמנים ומובילי תהליכים. למדו לשווק את עצמכם בצורה אותנטית.">
-    <meta name="keywords" content="חמש, מיתוג אישי, שיווק למטפלים, קהילה מקצועית, מאמנים, מדריכים, קואצ'ינג, בינה מלאכותית, AI">
-    <meta name="author" content="חמ״ש">
-    <meta name="robots" content="index, follow">
+    <title>חמ"ש | חיבורים מייצרים שינוי - פלטפורמה למקצוענים שרוצים להגיע לקהל שלהם</title>
+    <meta name="description" content="חמ"ש עוזרת למטפלים, מאמנים ומנחים לשווק את עצמם בצורה אותנטית. שיטה מובנית, קהילה תומכת, וכלי AI מותאמים אישית.">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="חמ"ש | חיבורים מייצרים שינוי">
+    <meta property="og:description" content="פלטפורמה למקצוענים שרוצים להגיע לקהל שלהם בצורה אותנטית">
+    <meta property="og:image" content="https://ha-mesh.com/og-image.png">
+    <meta property="og:url" content="https://ha-mesh.com/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://stp-ai.github.io/hamesh-website/">
-    <meta property="og:title" content="חמ״ש - חיבורים מייצרים שינוי">
-    <meta property="og:description" content="סביבה להתפתחות מקצועית ואישית למובילי תהליכים. למדו לשווק את עצמכם בצורה אותנטית עם כלים פרקטיים, קהילה תומכת ובינה מלאכותית.">
-    <meta property="og:image" content="https://stp-ai.github.io/hamesh-website/assets/graphics/banner.jpg">
     <meta property="og:locale" content="he_IL">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://stp-ai.github.io/hamesh-website/">
-    <meta name="twitter:title" content="חמ״ש - חיבורים מייצרים שינוי">
-    <meta name="twitter:description" content="סביבה להתפתחות מקצועית ואישית למובילי תהליכים">
-    <meta name="twitter:image" content="https://stp-ai.github.io/hamesh-website/assets/graphics/banner.jpg">
 
-    <title>חמ"ש - חיבורים מייצרים שינוי | מיתוג ושיווק למובילי תהליכים</title>
-    <link rel="icon" type="image/png" href="assets/logos/logo-transparent.png">
-    <link rel="apple-touch-icon" href="assets/logos/logo-transparent.png">
-    <link rel="canonical" href="https://stp-ai.github.io/hamesh-website/">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ha-mesh.com/">
 
-    <!-- Google Analytics Placeholder -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== CSS VARIABLES ========== */
+        :root {
+            --color-primary: #3B82F6;
+            --color-secondary: #8B5CF6;
+            --color-accent: #F97316;
+            --color-dark: #1E1145;
+            --color-darker: #140D2E;
+            --color-surface: #EDE9FE;
+            --color-surface-alt: #F5F3FF;
+            --color-text: #3B1F7E;
+            --color-text-muted: #6D5BA3;
+            --color-white: #FFFFFF;
+            --gradient-brand: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            --gradient-accent: linear-gradient(135deg, #F97316, #FB923C);
+            --gradient-hero: linear-gradient(160deg, #1E1145 0%, #2D1B69 40%, #1E1145 100%);
+            --font-main: 'Heebo', sans-serif;
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+        }
+
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            background: var(--color-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ========== CUSTOM SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-darker); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--color-secondary), var(--color-accent));
+        }
+        html { scrollbar-color: var(--color-secondary) var(--color-darker); scrollbar-width: thin; }
+
+        /* ========== REDUCED MOTION ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-delay: 0ms !important;
+                transition-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+            html { scroll-behavior: auto; }
+            .hero-word { opacity: 1 !important; transform: none !important; }
+            .scroll-progress { display: none !important; }
+            #particleCanvas { display: none !important; }
+        }
+
+        /* ========== SCROLL PROGRESS BAR ========== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), #FB923C, var(--color-secondary));
+            z-index: 10000;
+            transition: width 0.05s linear;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+        h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+
+        p {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            line-height: 1.8;
+        }
+
+        .gradient-text {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-animated {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #F97316, #3B82F6);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 6s ease infinite;
+        }
+
+        /* ========== UTILITY ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-brand);
+            border-radius: 2px;
+        }
+
+        .text-center { text-align: center; }
+
+        /* ========== NOISE OVERLAY ========== */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.08;
+            mix-blend-mode: overlay;
+        }
+
+        .noise-overlay svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes morph-blob {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+            75% { border-radius: 60% 40% 60% 30% / 40% 50% 60% 50%; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        @keyframes btn-shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes word-reveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes parallax-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(3deg); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ========== BUTTON SHINE EFFECT ========== */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            padding: var(--space-md) 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(30, 17, 69, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: var(--space-sm) 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            height: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--color-accent);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.6rem 1.5rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #EA6C0B;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-sm);
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== SVG WAVE DIVIDERS ========== */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            height: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave-divider-lg {
+            height: 80px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-hero);
+            overflow: hidden;
+            padding: var(--space-3xl) var(--space-lg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 700px 700px at 15% 25%, rgba(59, 130, 246, 0.3), transparent),
+                radial-gradient(ellipse 600px 600px at 85% 75%, rgba(139, 92, 246, 0.25), transparent),
+                radial-gradient(ellipse 500px 500px at 50% 50%, rgba(249, 115, 22, 0.1), transparent);
+            animation: gradient-shift 16s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+
+        #particleCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(59, 130, 246, 0.15);
+            top: 10%;
+            right: -5%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 280px;
+            height: 280px;
+            background: rgba(139, 92, 246, 0.12);
+            bottom: 10%;
+            left: -5%;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: rgba(249, 115, 22, 0.1);
+            top: 50%;
+            left: 30%;
+            animation: float 7s ease-in-out infinite 4s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: var(--space-xl);
+            animation: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));
+        }
+
+        .hero h1 {
+            color: var(--color-white);
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-word.revealed {
+            animation: word-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #60A5FA, #A78BFA, #F97316);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        .hero-sub {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.6s both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            justify-content: center;
+            animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.8s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 1rem 2.5rem;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-white);
+            background: var(--color-accent);
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: #EA6C0B;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .hero-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 1rem 2.5rem;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-white);
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta-secondary:hover {
+            border-color: var(--color-white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            animation: breathe 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== VALUE PROPOSITION SECTION ========== */
+        .values-section {
+            padding: var(--space-3xl) 0;
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .values-intro {
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+            text-align: center;
+        }
+
+        .values-intro h2 {
+            margin-bottom: var(--space-md);
+        }
+
+        .values-intro p {
+            color: var(--color-text-muted);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .value-card {
+            position: relative;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: 0 4px 20px rgba(59, 31, 126, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        /* Gradient border on hover */
+        .value-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 2px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 31, 126, 0.15);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            background: var(--gradient-brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            color: var(--color-white);
+        }
+
+        .value-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .value-card h3 {
+            margin-bottom: var(--space-sm);
+            color: var(--color-text);
+        }
+
+        .value-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ========== FEATURED COURSE SECTION ========== */
+        .course-section {
+            padding: var(--space-3xl) 0;
+            background: var(--color-surface-alt);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.05));
+            filter: blur(60px);
+            animation: morph-blob 15s ease-in-out infinite;
+            top: -100px;
+            left: -100px;
+            pointer-events: none;
+        }
+
+        .course-card {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            box-shadow: 0 20px 60px rgba(59, 31, 126, 0.12);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Gradient border */
+        .course-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-xl);
+            padding: 3px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .course-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--gradient-accent);
+            color: var(--color-white);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 50px;
+            margin-bottom: var(--space-md);
+        }
+
+        .course-content h2 {
+            margin-bottom: var(--space-md);
+        }
+
+        .course-content p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-lg);
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: var(--space-lg);
+        }
+
+        .course-features li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .course-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+        }
+
+        .course-price-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .course-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-text);
+        }
+
+        .course-price-sub {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .course-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 1rem 2rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .course-cta:hover {
+            background: #EA6C0B;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .course-visual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .course-stat {
+            background: var(--color-surface);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .course-stat:hover {
+            transform: scale(1.02);
+        }
+
+        .course-stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* ========== COMING SOON SECTION ========== */
+        .coming-section {
+            padding: var(--space-3xl) 0;
+            background: var(--color-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-section .noise-overlay {
+            filter: url(#noiseFilter);
+        }
+
+        .coming-section h2 {
+            color: var(--color-white);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+        }
+
+        .coming-section .section-sub {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            font-size: 1.1rem;
+        }
+
+        .coming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .coming-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all 0.4s ease;
+        }
+
+        .coming-card::before {
+            content: 'בקרוב';
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            padding: 0.3rem 0.8rem;
+            background: rgba(249, 115, 22, 0.2);
+            color: var(--color-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 50px;
+        }
+
+        .coming-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .coming-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            color: var(--color-primary);
+        }
+
+        .coming-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .coming-card h3 {
+            color: var(--color-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.2rem;
+        }
+
+        .coming-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about-section {
+            padding: var(--space-3xl) 0;
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .about-content p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-lg);
+            font-size: 1.1rem;
+        }
+
+        .about-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+
+        .about-value-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.6rem 1.2rem;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .about-value-tag:hover {
+            background: var(--color-surface-alt);
+            transform: translateY(-2px);
+        }
+
+        .about-value-tag svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-primary);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: var(--space-2xl) 0;
+            background: var(--color-darker);
+            color: var(--color-white);
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-lg);
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 50px;
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .course-card {
+                grid-template-columns: 1fr;
+                padding: var(--space-xl);
+            }
+
+            .course-visual {
+                flex-direction: row;
+            }
+
+            .course-stat {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: var(--space-2xl) var(--space-md);
+            }
+
+            .hero-logo {
+                width: 90px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta, .hero-cta-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .values-section, .course-section, .coming-section, .about-section {
+                padding: var(--space-2xl) 0;
+            }
+
+            .course-visual {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-logo {
+                width: 70px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .course-card {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- SVG Noise Filter -->
+    <svg style="position:absolute;width:0;height:0">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+    </svg>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <img src="assets/logos/logo-transparent.png" alt="חמש לוגו">
-            </a>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#problem" class="nav-link">האתגר</a>
-                <a href="#solution" class="nav-link">הפתרון</a>
-                <a href="#audience" class="nav-link">למי מתאים</a>
-                <a href="#services" class="nav-link">שירותים</a>
-                <a href="#contact" class="nav-link nav-cta">הצטרפו אלינו</a>
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="/">
+                    <img src="assets/logo-white.png" alt="חמ״ש" class="nav-logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/" class="active">בית</a></li>
+                    <li><a href="/course/">הקורס</a></li>
+                    <li><a href="#about">אודות</a></li>
+                    <li><a href="#contact">צור קשר</a></li>
+                </ul>
+                <a href="/course/" class="nav-cta btn-shine">לקורס</a>
+                <button class="mobile-menu-btn" aria-label="תפריט">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-bg" style="background-image: url('assets/graphics/banner.jpg');"></div>
+    <section class="hero">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <canvas id="particleCanvas"></canvas>
+
+        <div class="noise-overlay">
+            <svg><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+        </div>
+
         <div class="hero-content">
-            <img src="assets/logos/logo-transparent.png" alt="חמש לוגו" class="hero-logo">
-            <h1 class="hero-title">חמ"ש</h1>
-            <p class="hero-subtitle">חיבורים מייצרים שינוי</p>
-            <p class="hero-description">סביבה להתפתחות מקצועית ואישית למובילי תהליכים</p>
-            <div class="hero-tags">
-                <span class="tag">מיתוג אישי</span>
-                <span class="tag">קהילה תומכת</span>
-                <span class="tag">בינה מלאכותית</span>
+            <img src="assets/logo-color.png" alt="חמ״ש" class="hero-logo">
+            <h1>
+                <span class="hero-word">חיבורים</span>
+                <span class="hero-word highlight">מייצרים</span>
+                <span class="hero-word">שינוי</span>
+            </h1>
+            <p class="hero-sub">
+                עוזרים למטפלים, מאמנים ומנחים להגיע לקהל שלהם בצורה אותנטית.
+                שיטה מובנית, קהילה תומכת, וכלי AI מותאמים אישית.
+            </p>
+            <div class="hero-cta-group">
+                <a href="/course/" class="hero-cta btn-shine">
+                    לקורס הראשון שלנו
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+                <a href="#about" class="hero-cta-secondary">
+                    קצת עלינו
+                </a>
             </div>
-            <a href="https://chat.whatsapp.com/KlC4QBn2O3MLRsv4YZcoOU" target="_blank" class="btn btn-primary btn-large">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                הצטרפו לקהילה
-            </a>
         </div>
+
         <div class="scroll-indicator">
-            <span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="section section-light" id="problem">
-        <div class="container">
-            <h2 class="section-title">מכירים את זה?</h2>
-            <p class="section-subtitle">האתגרים שמובילי תהליכים מתמודדים איתם</p>
-            <div class="cards-grid">
-                <div class="card card-problem">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
-                    <h3>מצוינים במה שאתם עושים</h3>
-                    <p>אבל מתקשים להעביר את הערך האמיתי שלכם לקהל שצריך אתכם</p>
-                </div>
-                <div class="card card-problem">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                    </div>
-                    <h3>שיווק מרגיש לא טבעי</h3>
-                    <p>מרגישים שלשווק זה "למכור את עצמכם" ולא מתחבר לאופי שלכם</p>
-                </div>
-                <div class="card card-problem">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                    </div>
-                    <h3>אין תהליך מסודר</h3>
-                    <p>יוצרים תוכן באקראיות, בלי שיטה ברורה שמביאה תוצאות</p>
-                </div>
-                <div class="card card-problem">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3>מרגישים לבד בדרך</h3>
-                    <p>אין קהילה מקצועית תומכת, אין עם מי להתייעץ ולצמוח יחד</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="section section-gradient" id="solution">
-        <div class="container">
-            <h2 class="section-title text-white">הפתרון של חמ"ש</h2>
-            <p class="section-subtitle text-white-muted">שיטה פשוטה, קהילה תומכת, טכנולוגיה חכמה</p>
-            <div class="cards-grid">
-                <div class="card card-solution">
-                    <div class="card-icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-                    </div>
-                    <h3>מתודולוגיה פשוטה</h3>
-                    <p>מודלים ברורים ופרקטיים ליצירת תוכן ומיתוג אישי. שלבים מסודרים שכל אחד יכול ליישם.</p>
-                </div>
-                <div class="card card-solution">
-                    <div class="card-icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3>ליווי אישי וקבוצתי</h3>
-                    <p>הכוונה מקצועית בתהליך מובנה עם תמיכה לאורך כל הדרך. לא לבד בשום שלב.</p>
-                </div>
-                <div class="card card-solution">
-                    <div class="card-icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-                    </div>
-                    <h3>קהילה שיתופית</h3>
-                    <p>חיבורים עסקיים, נטוורקינג ותמיכה הדדית. צומחים יחד עם אנשי מקצוע כמוכם.</p>
-                </div>
-                <div class="card card-solution card-highlight">
-                    <div class="card-icon-circle">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10"/><circle cx="12" cy="12" r="3"/></svg>
-                    </div>
-                    <h3>העוזר הדיגיטלי</h3>
-                    <p>AI שמותאם אישית לכל משתתף, מסייע ביצירת תוכן והורדת עומס קוגניטיבי.</p>
-                </div>
-            </div>
-            <div class="solution-result">
-                <p>התוצאה: <strong>שיווק הופך לחלק טבעי מהעשייה המקצועית שלכם</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Target Audience Section -->
-    <section class="section section-light" id="audience">
-        <div class="container">
-            <h2 class="section-title">למי חמ"ש מתאים?</h2>
-            <p class="section-subtitle">מובילי תהליכים בתחומי ההתפתחות האישית והמקצועית</p>
-            <div class="audience-grid">
-                <div class="audience-card">
-                    <span class="audience-icon">❤️</span>
-                    <h4>מטפלים רגשיים</h4>
-                    <p>פסיכולוגים, NLP, מיינדפולנס</p>
-                </div>
-                <div class="audience-card">
-                    <span class="audience-icon">⭐</span>
-                    <h4>מאמנים אישיים</h4>
-                    <p>קואצ'רים, התפתחות אישית</p>
-                </div>
-                <div class="audience-card">
-                    <span class="audience-icon">📚</span>
-                    <h4>מורים ומדריכים</h4>
-                    <p>מרצים, מנחי סדנאות</p>
-                </div>
-                <div class="audience-card">
-                    <span class="audience-icon">🔵</span>
-                    <h4>מנחי קבוצות</h4>
-                    <p>מעגלי נשים, העצמה</p>
-                </div>
-                <div class="audience-card">
-                    <span class="audience-icon">🧭</span>
-                    <h4>יועצים ומנטורים</h4>
-                    <p>קריירה, עסקים, מיתוג</p>
-                </div>
-                <div class="audience-card">
-                    <span class="audience-icon">🌸</span>
-                    <h4>מומחי גוף-נפש</h4>
-                    <p>יוגה, רפואה משלימה</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Wave Divider -->
+    <div class="wave-divider" style="background: var(--color-white);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,60 C360,90 720,30 1080,60 C1260,75 1380,50 1440,40 L1440,0 L0,0 Z" fill="#1E1145"/>
+        </svg>
+    </div>
 
     <!-- Values Section -->
-    <section class="section section-white" id="values">
+    <section class="values-section">
         <div class="container">
-            <h2 class="section-title">הערכים שמנחים אותנו</h2>
-            <div class="values-container">
-                <div class="value-core">
-                    <div class="value-core-circle">שינוי</div>
-                    <p>שינוי אמיתי דרך תהליך התפתחותי אישי וחיבורים בקהילה</p>
-                </div>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <h4>אותנטיות</h4>
-                        <p>ערך אמיתי, לא הבטחות ריקות</p>
-                    </div>
-                    <div class="value-item">
-                        <h4>חיבורים</h4>
-                        <p>תמיכה הדדית ושיתופי פעולה</p>
-                    </div>
-                    <div class="value-item">
-                        <h4>פשטות</h4>
-                        <p>שיטה ברורה, ללא עומס מידע</p>
-                    </div>
-                    <div class="value-item">
-                        <h4>טכנולוגיה</h4>
-                        <p>AI לעזרה ביצירת תוכן</p>
-                    </div>
-                    <div class="value-item">
-                        <h4>שיווק בערך</h4>
-                        <p>תוכן שנותן ערך אמיתי</p>
-                    </div>
-                    <div class="value-item">
-                        <h4>נגישות</h4>
-                        <p>הכול מרגיש טבעי ליישום</p>
-                    </div>
-                </div>
+            <div class="values-intro reveal">
+                <span class="section-label">מה אנחנו מציעים</span>
+                <h2>לא שירות שיווק חיצוני.<br>לא עוד קורס תיאורטי.</h2>
+                <p>תהליך מובנה שנותן לך את הכלים, הידע והתמיכה כדי לשווק את עצמך בצורה שמרגישה נכונה ואותנטית.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="section section-light" id="services">
-        <div class="container">
-            <h2 class="section-title">מה אנחנו מציעים</h2>
-            <p class="section-subtitle">מסלולים שונים להתפתחות מקצועית</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">👤</div>
+            <div class="values-grid">
+                <div class="value-card reveal reveal-delay-1">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>שיטה מובנית</h3>
+                    <p>תהליך ברור מהיסודות ועד התוכן. בלי לנחש, בלי להמציא את הגלגל מחדש.</p>
+                </div>
+
+                <div class="value-card reveal reveal-delay-2">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>קהילה תומכת</h3>
+                    <p>מקצוענים שמבינים אותך. שיתופי פעולה, משוב, והמלצות הדדיות.</p>
+                </div>
+
+                <div class="value-card reveal reveal-delay-3">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                            <path d="M12 2a10 10 0 0 1 10 10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>כלי AI מותאמים</h3>
+                    <p>סוכנים שמכירים את המותג שלך ועוזרים ליצור תוכן שנשמע כמוך.</p>
+                </div>
+
+                <div class="value-card reveal reveal-delay-4">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
                     <h3>ליווי אישי</h3>
-                    <p>פגישות שבועיות 1-על-1, עבודה על המודלים, יצירת תוכן ומוצר דיגיטלי</p>
-                    <div class="service-formats">
-                        <span>פרונטלי</span>
-                        <span>דיגיטלי</span>
-                    </div>
+                    <p>הדרכה בגובה העיניים, משוב אמיתי, ותמיכה לאורך כל הדרך.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">📝</div>
-                    <h3>מאישיות לתוכן</h3>
-                    <p>יצירת זהות מותגית, הגדרת קהל יעד ובניית אסטרטגיית תוכן</p>
-                    <div class="service-formats">
-                        <span>קורס</span>
-                        <span>פרונטלי / זום</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider" style="background: var(--color-surface-alt);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 L0,0 Z" fill="#FFFFFF"/>
+        </svg>
+    </div>
+
+    <!-- Course Section -->
+    <section class="course-section">
+        <div class="course-blob"></div>
+        <div class="container">
+            <div class="course-card reveal">
+                <div class="course-content">
+                    <span class="course-badge">הקורס הראשון שלנו</span>
+                    <h2>מאישיות לתוכן</h2>
+                    <p>תהליך סדנאתי שלוקח אותך מהיסודות של הזהות המקצועית שלך ועד לתוכן שמרגיש כמוך ומדבר לקהל שלך.</p>
+
+                    <ul class="course-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            7 מפגשים חיים בזום
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            קבוצה קטנה ואינטימית
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            עוזר AI אישי לאורך התהליך
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            ספר מותג אישי בסיום
+                        </li>
+                    </ul>
+
+                    <div class="course-price-row">
+                        <span class="course-price">₪2,500</span>
+                        <span class="course-price-sub">עד 12 תשלומים</span>
                     </div>
+
+                    <a href="/course/" class="course-cta btn-shine">
+                        לפרטים נוספים
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">💎</div>
-                    <h3>מתוכן למוצר</h3>
-                    <p>הפיכת התוכן שלכם לפלטפורמת הכנסה דיגיטלית</p>
-                    <div class="service-formats">
-                        <span>קורס</span>
-                        <span>פרונטלי / זום</span>
+
+                <div class="course-visual">
+                    <div class="course-stat">
+                        <div class="course-stat-number">7</div>
+                        <div class="course-stat-label">מפגשים</div>
                     </div>
-                </div>
-                <div class="service-card service-card-highlight">
-                    <div class="service-icon">🤖</div>
-                    <h3>העוזר הדיגיטלי</h3>
-                    <p>AI מותאם אישית לתכנון, יצירה וניהול תוכן בקלות</p>
-                    <div class="service-formats">
-                        <span>טכנולוגיה</span>
-                        <span>כלול בתוכניות</span>
+                    <div class="course-stat">
+                        <div class="course-stat-number">21</div>
+                        <div class="course-stat-label">שעות תוכן</div>
+                    </div>
+                    <div class="course-stat">
+                        <div class="course-stat-number">1</div>
+                        <div class="course-stat-label">ספר מותג אישי</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Hamesh Section -->
-    <section class="section section-gradient" id="why">
+    <!-- Wave Divider -->
+    <div class="wave-divider" style="background: var(--color-dark);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,60 C480,20 960,90 1440,40 L1440,0 L0,0 Z" fill="#F5F3FF"/>
+        </svg>
+    </div>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-section">
+        <div class="noise-overlay">
+            <svg><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+        </div>
         <div class="container">
-            <h2 class="section-title text-white">למה דווקא חמ"ש?</h2>
-            <div class="why-grid">
-                <div class="why-item">
-                    <div class="why-check">✓</div>
-                    <div>
-                        <h4>ליווי צמוד ונגיש</h4>
-                        <p>לא רק תיאוריה - תמיכה אמיתית לאורך כל הדרך</p>
+            <h2 class="reveal">מה עוד בדרך</h2>
+            <p class="section-sub reveal reveal-delay-1">הפלטפורמה מתרחבת. הנה מה שאנחנו מפתחים:</p>
+
+            <div class="coming-grid">
+                <div class="coming-card reveal reveal-delay-2">
+                    <div class="coming-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
                     </div>
+                    <h3>סוכני AI ליצירת תוכן</h3>
+                    <p>סוכן שמכיר את ספר המותג שלך ועוזר ליצור תוכן שנשמע בדיוק כמוך.</p>
                 </div>
-                <div class="why-item">
-                    <div class="why-check">✓</div>
-                    <div>
-                        <h4>מותאם למקצועות הליווי</h4>
-                        <p>השיטה נבנתה במיוחד למטפלים, מאמנים ומובילי תהליכים</p>
+
+                <div class="coming-card reveal reveal-delay-3">
+                    <div class="coming-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"/>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                        </svg>
                     </div>
+                    <h3>יצירת סרטונים מותאמים</h3>
+                    <p>סרטונים קצרים לרשתות החברתיות, מותאמים לסגנון ולמסר שלך.</p>
                 </div>
-                <div class="why-item">
-                    <div class="why-check">✓</div>
-                    <div>
-                        <h4>פרקטי ועצמאי</h4>
-                        <p>לומדים לקחת שליטה מלאה על השיווק - לא תלויים באף אחד</p>
+
+                <div class="coming-card reveal reveal-delay-4">
+                    <div class="coming-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
                     </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-check">✓</div>
-                    <div>
-                        <h4>קהילה תומכת ופעילה</h4>
-                        <p>נטוורקינג, שיתופי פעולה, וצמיחה יחד</p>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-check">✓</div>
-                    <div>
-                        <h4>מערכת בת-קיימא</h4>
-                        <p>בונים מערכת שיווק שעובדת לאורך זמן</p>
-                    </div>
+                    <h3>אוטומציות לעסקים</h3>
+                    <p>תהליכים אוטומטיים שחוסכים זמן ומייעלים את העבודה השוטפת.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section section-light" id="testimonials">
+    <!-- Wave Divider -->
+    <div class="wave-divider" style="background: var(--color-white);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,50 1440,60 L1440,0 L0,0 Z" fill="#1E1145"/>
+        </svg>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
         <div class="container">
-            <h2 class="section-title">מה אומרים עלינו</h2>
-            <p class="section-subtitle">חברי הקהילה משתפים את החוויה שלהם</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"הצטרפתי לחמ"ש בלי לדעת מה לצפות, ותוך חודשיים כבר יצרתי את הזהות המותגית שלי ואני מפרסמת תוכן בביטחון."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">מ</div>
-                        <div>
-                            <strong>מיכל כ.</strong>
-                            <span>מטפלת רגשית</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"העוזר הדיגיטלי שינה לי את החיים. מה שנהגתי לבזבז עליו שעות עכשיו לוקח דקות, ואני יכול להתמקד במה שבאמת חשוב."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">א</div>
-                        <div>
-                            <strong>אלון ר.</strong>
-                            <span>מאמן אישי</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"הקהילה כאן היא לא סתם קבוצה - זו משפחה מקצועית אמיתית. שיתופי פעולה, תמיכה, וצמיחה יחד."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">ש</div>
-                        <div>
-                            <strong>שרון ד.</strong>
-                            <span>מנחת קבוצות</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="about-content">
+                <span class="section-label reveal">אודות חמ"ש</span>
+                <h2 class="reveal reveal-delay-1">למקצוענים שיודעים <span class="gradient-text">לעשות</span>,<br>אבל מתקשים <span class="gradient-text">לספר</span></h2>
 
-    <!-- CTA Section -->
-    <section class="section section-cta" id="contact">
-        <div class="container">
-            <img src="assets/logos/logo-white.png" alt="חמש לוגו" class="cta-logo">
-            <h2 class="cta-title">מוכנים להתחיל?</h2>
-            <p class="cta-subtitle">הצטרפו לקהילת חמ"ש והתחילו לשווק בדרך שמרגישה נכון</p>
-            <div class="cta-buttons">
-                <a href="https://chat.whatsapp.com/KlC4QBn2O3MLRsv4YZcoOU" target="_blank" class="btn btn-white btn-large">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    הצטרפו לקהילה בוואטסאפ
-                </a>
-                <a href="tel:+972509945351" class="btn btn-outline-white btn-large">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    צרו קשר
-                </a>
-            </div>
+                <p class="reveal reveal-delay-2">
+                    אנחנו מאמינים שמקצוענים מעולים לא צריכים להתחפש למשווקים.
+                    הם צריכים דרך להביא את מי שהם באמת לעולם - בצורה ברורה, אותנטית ומשפיעה.
+                </p>
 
-            <!-- Contact Form -->
-            <div class="contact-form-container">
-                <h3 class="contact-form-title">השאירו פרטים ונחזור אליכם</h3>
-                <form class="contact-form" id="contact-form" onsubmit="sendToWhatsApp(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" name="name" id="form-name" placeholder="שם מלא" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" id="form-phone" placeholder="טלפון" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="form-email" placeholder="אימייל" required>
-                    </div>
-                    <div class="form-group">
-                        <select name="interest" id="form-interest" required>
-                            <option value="" disabled selected>במה אתם מתעניינים?</option>
-                            <option value="ליווי אישי">ליווי אישי</option>
-                            <option value="קורס מאישיות לתוכן">קורס מאישיות לתוכן</option>
-                            <option value="קורס מתוכן למוצר">קורס מתוכן למוצר</option>
-                            <option value="העוזר הדיגיטלי">העוזר הדיגיטלי</option>
-                            <option value="הצטרפות לקהילה">הצטרפות לקהילה</option>
-                            <option value="אחר">אחר</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" id="form-message" placeholder="ספרו לנו קצת על עצמכם ומה אתם מחפשים..." rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-white btn-large">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        שליחה לוואטסאפ
-                    </button>
-                </form>
-            </div>
+                <p class="reveal reveal-delay-3">
+                    חמ"ש נוצרה כדי לתת למטפלים, מאמנים ומנחים את הכלים להגיע לאנשים שהכי יכולים להיעזר בהם.
+                    לא דרך טריקים שיווקיים, אלא דרך חיבור אמיתי לערכים ולזהות המקצועית.
+                </p>
 
-            <div class="contact-info">
-                <a href="mailto:5hamesh5555@gmail.com" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    5hamesh5555@gmail.com
-                </a>
-                <a href="tel:+972509945351" class="contact-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    050-994-5351
-                </a>
+                <div class="about-values reveal reveal-delay-4">
+                    <span class="about-value-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        אותנטיות
+                    </span>
+                    <span class="about-value-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        קהילה
+                    </span>
+                    <span class="about-value-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        נגישות
+                    </span>
+                    <span class="about-value-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        טכנולוגיה
+                    </span>
+                    <span class="about-value-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        ערך אמיתי
+                    </span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="assets/logos/logo-white.png" alt="חמש לוגו" class="footer-logo">
-                    <p>חיבורים מייצרים שינוי</p>
+            <div class="footer-inner">
+                <img src="assets/logo-white.png" alt="חמ״ש" class="footer-logo">
+                <p class="footer-tagline">חיבורים מייצרים שינוי</p>
+                <div class="footer-links">
+                    <a href="/course/">הקורס</a>
+                    <a href="/privacy/">מדיניות פרטיות</a>
+                    <a href="/terms/">תנאי שימוש</a>
                 </div>
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/profile.php?id=61573993741133" target="_blank" class="social-link" title="פייסבוק">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="https://instagram.com/project.hamesh5" target="_blank" class="social-link" title="אינסטגרם">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                    <a href="https://chat.whatsapp.com/KlC4QBn2O3MLRsv4YZcoOU" target="_blank" class="social-link" title="וואטסאפ">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 חמ"ש - חיבורים מייצרים שינוי. כל הזכויות שמורות.</p>
+                <p class="footer-copyright">© 2026 חמ"ש. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // ========== SCROLL PROGRESS ==========
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.body.scrollHeight - window.innerHeight;
+            var scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+        });
+
+        // ========== STICKY NAV ==========
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 80) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // ========== HERO WORD BY WORD REVEAL ==========
+        var heroWords = document.querySelectorAll('.hero-word');
+        heroWords.forEach(function(word, index) {
+            setTimeout(function() {
+                word.classList.add('revealed');
+            }, 800 + (index * 200));
+        });
+
+        // ========== INTERSECTION OBSERVER FOR REVEALS ==========
+        var revealElements = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(function(el) {
+            observer.observe(el);
+        });
+
+        // ========== CANVAS PARTICLES ==========
+        var canvas = document.getElementById('particleCanvas');
+        if (canvas && window.matchMedia('(min-width: 769px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var ctx = canvas.getContext('2d');
+            var particles = [];
+            var particleCount = 40;
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            function Particle() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            Particle.prototype.update = function() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            };
+
+            Particle.prototype.draw = function() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(249, 115, 22, 0.6)';
+                ctx.fill();
+            };
+
+            for (var i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(function(p) {
+                    p.update();
+                    p.draw();
+                });
+
+                // Draw connections
+                for (var i = 0; i < particles.length; i++) {
+                    for (var j = i + 1; j < particles.length; j++) {
+                        var dx = particles[i].x - particles[j].x;
+                        var dy = particles[i].y - particles[j].y;
+                        var dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = 'rgba(249, 115, 22, ' + (0.15 * (1 - dist / 150)) + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
