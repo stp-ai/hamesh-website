@@ -334,6 +334,34 @@
             box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
         }
 
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links-wrapper {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            opacity: 0;
+        }
+
+        .nav.scrolled .nav-link {
+            opacity: 1;
+        }
+
+        .nav-link:hover {
+            color: var(--color-white);
+        }
+
         /* ========== SVG WAVE DIVIDERS ========== */
         .wave-divider {
             display: block;
@@ -1318,6 +1346,222 @@
         .form-success h3 { color: var(--color-dark); margin-bottom: var(--space-sm); }
         .form-success p { color: var(--color-text-muted); }
 
+        /* ========== PAYMENT CTA ========== */
+        .payment-wrapper {
+            max-width: 560px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .payment-card {
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            background: var(--color-white);
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 20px 80px rgba(249, 115, 22, 0.12), 0 0 0 1px rgba(249, 115, 22, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-xl);
+            padding: 2px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-secondary), var(--color-primary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .payment-header h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--color-dark);
+            margin-bottom: var(--space-xs);
+        }
+
+        .payment-header p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .payment-includes {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .payment-include-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .payment-include-item svg {
+            flex-shrink: 0;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            width: 100%;
+            padding: 1.1rem;
+            background: var(--gradient-accent);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .payment-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg);
+            animation: btn-shine 4s ease-in-out infinite;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.4);
+        }
+
+        .payment-btn:active { transform: translateY(0); }
+
+        .payment-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+            position: relative;
+        }
+
+        .payment-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            background: var(--color-surface-alt);
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
+
+        /* ========== OR DIVIDER ========== */
+        .section-or {
+            text-align: center;
+            margin: var(--space-lg) auto;
+            max-width: 560px;
+            position: relative;
+        }
+
+        .section-or::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .section-or span {
+            position: relative;
+            background: var(--color-surface-alt);
+            padding: 0 var(--space-lg);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* ========== CONSULTATION TOGGLE ========== */
+        .consult-wrapper {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .consult-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-lg);
+            background: var(--color-white);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .consult-toggle:hover {
+            border-color: var(--color-secondary);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
+        }
+
+        .consult-toggle-text {
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .consult-arrow {
+            stroke: var(--color-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .consult-toggle.open .consult-arrow {
+            transform: rotate(180deg);
+        }
+
+        .consult-form-area {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .consult-form-area.open {
+            max-height: 800px;
+        }
+
+        .consult-form-area .form-wrapper {
+            margin-top: var(--space-lg);
+        }
+
+        .consult-submit {
+            background: var(--gradient-brand) !important;
+        }
+
+        .consult-submit:hover {
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35) !important;
+        }
+
         /* ========== FAQ ========== */
         .faq {
             padding: var(--space-3xl) 0;
@@ -1554,11 +1798,16 @@
 <!-- ========== STICKY NAV ========== -->
 <nav class="nav" id="nav">
     <div class="container nav-inner">
-        <img src="../assets/logo-color.png" alt="חמש" class="nav-logo" loading="lazy">
-        <a href="#form" class="nav-cta btn-shine">
-            השאירו פרטים
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <a href="/" class="nav-logo-link">
+            <img src="../assets/logo-color.png" alt="חמש" class="nav-logo" loading="lazy">
         </a>
+        <div class="nav-links-wrapper">
+            <a href="/" class="nav-link">בית</a>
+            <a href="#form" class="nav-cta btn-shine">
+                להרשמה
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
     </div>
 </nav>
 
@@ -1596,7 +1845,7 @@
         <p class="hero-urgency">הקבוצה הקרובה מתחילה במרץ</p>
 
         <a href="#form" class="hero-cta">
-            רוצה לשמור מקום?
+            רוצה לשריין מקום?
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
@@ -1975,61 +2224,125 @@
     </svg>
 </div>
 
-<!-- ========== FORM ========== -->
+<!-- ========== REGISTRATION ========== -->
 <section class="form-section" id="form">
     <div class="container">
         <!-- Price Header -->
         <div class="form-price-header reveal">
             <p class="price-line">7 מפגשים. עוזר AI אישי. <span class="price-amount">2,500 ש״ח.</span></p>
-            <p class="price-sub">בלי התחייבות. נספר לך על התהליך.</p>
+            <p class="price-sub">אפשר לשלם בתשלומים. קבלה אוטומטית.</p>
         </div>
 
-        <div class="form-wrapper reveal reveal-delay-1">
-            <div class="form-header">
-                <h2>רוצה לשמוע עוד?</h2>
-                <p>השאירי פרטים ונחזור אליך עם כל המידע</p>
+        <!-- Primary CTA: Payment -->
+        <div class="payment-wrapper reveal reveal-delay-1">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <h2>הרשמה ותשלום</h2>
+                    <p>תשלום מאובטח באשראי, Bit, Apple Pay או Google Pay</p>
+                </div>
+
+                <div class="payment-includes">
+                    <div class="payment-include-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>7 מפגשי זום חיים (21 שעות)</span>
+                    </div>
+                    <div class="payment-include-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>עוזר AI אישי שממשיך ללוות</span>
+                    </div>
+                    <div class="payment-include-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>ספר מותג אישי + בנק תוכן</span>
+                    </div>
+                    <div class="payment-include-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>קבוצה קטנה ואינטימית</span>
+                    </div>
+                </div>
+
+                <a href="https://mrng.to/dhDn7DliOD" class="payment-btn" id="paymentBtn">
+                    שריינו לי מקום
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <div class="payment-badges">
+                    <span class="payment-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        תשלום מאובטח
+                    </span>
+                    <span class="payment-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        קבלה אוטומטית למייל
+                    </span>
+                    <span class="payment-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M16 8l-8 8M8 8l8 8"/></svg>
+                        עד 12 תשלומים
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-or reveal reveal-delay-2">
+            <span>או</span>
+        </div>
+
+        <!-- Secondary: Consultation Form -->
+        <div class="consult-wrapper reveal reveal-delay-3">
+            <div class="consult-toggle" id="consultToggle">
+                <span class="consult-toggle-text">רוצה לשמוע עוד לפני שמחליטים?</span>
+                <svg class="consult-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
 
-            <form id="contactForm" action="https://stp2403.app.n8n.cloud/webhook/hamash-register" method="POST">
-                <div class="form-group">
-                    <label for="name">שם מלא</label>
-                    <input type="text" id="name" name="name" required placeholder="איך קוראים לך?">
+            <div class="consult-form-area" id="consultFormArea">
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <h2>שיחת התאמה</h2>
+                        <p>השאירי פרטים ונחזור אליך עם כל המידע</p>
+                    </div>
+
+                    <form id="contactForm" action="https://stp2403.app.n8n.cloud/webhook/hamash-register" method="POST">
+                        <div class="form-group">
+                            <label for="name">שם מלא</label>
+                            <input type="text" id="name" name="name" required placeholder="איך קוראים לך?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="050-0000000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">אימייל</label>
+                            <input type="email" id="email" name="email" required placeholder="name@example.com" dir="ltr" style="text-align:right">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profession">תחום עיסוק</label>
+                            <input type="text" id="profession" name="profession" placeholder="מה את עושה?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">משהו שחשוב לך שנדע?</label>
+                            <textarea id="message" name="message" placeholder="אופציונלי"></textarea>
+                        </div>
+
+                        <input type="hidden" name="source" value="landing-page-v4.2-consult">
+                        <input type="hidden" name="timestamp" id="timestamp">
+
+                        <button type="submit" class="form-submit consult-submit">שלחי פרטים</button>
+                        <p class="form-note">לא נשלח ספאם. רק פרטים על התהליך.</p>
+                    </form>
+
+                    <div class="form-success" id="formSuccess">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle class="check-circle" cx="32" cy="32" r="30" stroke="#34D399" stroke-width="3"/>
+                            <polyline class="check-mark" points="20 34 28 42 44 26" stroke="#34D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3>תודה!</h3>
+                        <p>קיבלנו את הפרטים שלך ונחזור אליך בקרוב.</p>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="phone">טלפון</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="050-0000000">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">אימייל</label>
-                    <input type="email" id="email" name="email" required placeholder="name@example.com" dir="ltr" style="text-align:right">
-                </div>
-
-                <div class="form-group">
-                    <label for="profession">תחום עיסוק</label>
-                    <input type="text" id="profession" name="profession" placeholder="מה את עושה?">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">משהו שחשוב לך שנדע?</label>
-                    <textarea id="message" name="message" placeholder="אופציונלי"></textarea>
-                </div>
-
-                <input type="hidden" name="source" value="landing-page-v4.1">
-                <input type="hidden" name="timestamp" id="timestamp">
-
-                <button type="submit" class="form-submit">שלחי פרטים</button>
-                <p class="form-note">לא נשלח ספאם. רק פרטים על התהליך.</p>
-            </form>
-
-            <div class="form-success" id="formSuccess">
-                <svg viewBox="0 0 64 64" fill="none">
-                    <circle class="check-circle" cx="32" cy="32" r="30" stroke="#34D399" stroke-width="3"/>
-                    <polyline class="check-mark" points="20 34 28 42 44 26" stroke="#34D399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <h3>תודה!</h3>
-                <p>קיבלנו את הפרטים שלך ונחזור אליך בקרוב.</p>
             </div>
         </div>
     </div>
@@ -2137,7 +2450,7 @@
         </div>
         <div class="reveal reveal-delay-2">
             <a href="#form">
-                רוצה לשמור מקום?
+                רוצה לשריין מקום?
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
@@ -2145,9 +2458,15 @@
 </section>
 
 <footer class="footer">
-    <div class="container">
-        <img src="../assets/logo-color.png" alt="חמש" class="footer-logo" loading="lazy">
+    <div class="container" style="text-align:center;">
+        <a href="/"><img src="../assets/logo-color.png" alt="חמש" class="footer-logo" loading="lazy"></a>
         <p style="color:rgba(255,255,255,0.6);font-size:1rem;font-weight:700;margin-top:0.3rem;">חמ"ש - חיבורים מייצרים שינוי</p>
+        <div style="display:flex;gap:var(--space-lg);justify-content:center;margin-top:var(--space-md);flex-wrap:wrap;">
+            <a href="/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">בית</a>
+            <a href="/privacy/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">מדיניות פרטיות</a>
+            <a href="/terms/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">תנאי שימוש</a>
+        </div>
+        <p style="color:rgba(255,255,255,0.3);font-size:0.8rem;margin-top:var(--space-md);">© 2026 חמ"ש. כל הזכויות שמורות.</p>
     </div>
 </footer>
 
@@ -2345,6 +2664,16 @@
     })();
 
     ParticleSystem.init();
+
+    // ===== Consultation Toggle =====
+    var consultToggle = document.getElementById('consultToggle');
+    var consultFormArea = document.getElementById('consultFormArea');
+    if (consultToggle && consultFormArea) {
+        consultToggle.addEventListener('click', function() {
+            consultToggle.classList.toggle('open');
+            consultFormArea.classList.toggle('open');
+        });
+    }
 
     // ===== FAQ Accordion =====
     document.querySelectorAll('.faq-question').forEach(function(btn) {
