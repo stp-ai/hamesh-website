@@ -6,8 +6,8 @@
     'use strict';
 
     var CONFIG = {
-        apiEndpoint: '',
-        leadEndpoint: '',
+        apiEndpoint: 'https://stp2403.app.n8n.cloud/webhook/hamesh-chat',
+        leadEndpoint: 'https://stp2403.app.n8n.cloud/webhook/hamesh-chat-lead',
         sessionKey: 'hamesh_chat_session',
         historyKey: 'hamesh_chat_history',
         maxHistory: 20,
@@ -439,7 +439,7 @@
         })
         .then(function(data) {
             hideTyping();
-            var response = data.response || CONFIG.errorMessage;
+            var response = data.reply || data.response || CONFIG.errorMessage;
 
             // Check for lead form flag
             var showLead = false;
@@ -450,7 +450,7 @@
 
             addBotMessage(response);
 
-            if (showLead || data.show_lead_form) {
+            if (showLead || data.showLeadForm || data.show_lead_form) {
                 showLeadForm();
             }
 
