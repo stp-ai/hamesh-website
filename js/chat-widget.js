@@ -547,7 +547,7 @@
             errorEl.style.display = 'block';
             return;
         }
-        if (phone && !/^0[2-9]\d{7,8}$/.test(phone.replace(/[-\s]/g, ''))) {
+        if (phone && !/^(?:0|\+?972)[2-9]\d{7,8}$/.test(phone.replace(/[-\s()]/g, ''))) {
             errorEl.textContent = 'מספר טלפון לא תקין';
             errorEl.style.display = 'block';
             return;
