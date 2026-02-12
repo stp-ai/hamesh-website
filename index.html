@@ -105,6 +105,31 @@
             #particleCanvas { display: none !important; }
         }
 
+        /* ========== ACCESSIBILITY ========== */
+        .skip-nav {
+            position: absolute;
+            top: -100%;
+            right: 0;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            z-index: 10001;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.3s ease;
+        }
+        .skip-nav:focus {
+            top: 0;
+        }
+        *:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+        input:focus-visible, textarea:focus-visible, select:focus-visible {
+            outline-offset: 0;
+        }
+
         /* ========== SCROLL PROGRESS BAR ========== */
         .scroll-progress {
             position: fixed;
@@ -1148,6 +1173,8 @@
         </filter>
     </svg>
 
+    <a href="#main-content" class="skip-nav">דלג לתוכן</a>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="container">
@@ -1170,6 +1197,8 @@
             </div>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1480,6 +1509,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer" id="contact">

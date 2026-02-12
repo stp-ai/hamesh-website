@@ -308,10 +308,10 @@
                     '<div class="cw-header-status">בדרך כלל עונים תוך דקה</div>' +
                 '</div>' +
             '</div>' +
-            '<div class="cw-messages" id="cwMessages"></div>' +
+            '<div class="cw-messages" id="cwMessages" aria-live="polite" aria-label="הודעות צ\'אט"></div>' +
             '<div id="cwLeadContainer"></div>' +
             '<div class="cw-input-area">' +
-                '<textarea class="cw-input" id="cwInput" placeholder="כתבו הודעה..." rows="1" maxlength="' + CONFIG.maxMessageLength + '"></textarea>' +
+                '<textarea class="cw-input" id="cwInput" placeholder="כתבו הודעה..." rows="1" maxlength="' + CONFIG.maxMessageLength + '" aria-label="כתבו הודעה"></textarea>' +
                 '<button class="cw-send-btn" id="cwSend" aria-label="שלח">' +
                     '<svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>' +
                 '</button>' +
@@ -508,10 +508,10 @@
         container.innerHTML =
             '<div class="cw-lead-form" id="cwLeadForm">' +
                 '<div class="cw-lead-title">השאירו פרטים ונחזור אליכם</div>' +
-                '<div id="cwLeadError" class="cw-lead-error" style="display:none"></div>' +
-                '<input class="cw-lead-field" id="cwLeadName" type="text" placeholder="שם" autocomplete="name">' +
-                '<input class="cw-lead-field" id="cwLeadPhone" type="tel" placeholder="טלפון" autocomplete="tel" dir="ltr">' +
-                '<input class="cw-lead-field" id="cwLeadEmail" type="email" placeholder="אימייל (אופציונלי)" autocomplete="email" dir="ltr">' +
+                '<div id="cwLeadError" class="cw-lead-error" role="alert" style="display:none"></div>' +
+                '<input class="cw-lead-field" id="cwLeadName" type="text" placeholder="שם" autocomplete="name" aria-label="שם">' +
+                '<input class="cw-lead-field" id="cwLeadPhone" type="tel" placeholder="טלפון" autocomplete="tel" dir="ltr" aria-label="טלפון">' +
+                '<input class="cw-lead-field" id="cwLeadEmail" type="email" placeholder="אימייל (אופציונלי)" autocomplete="email" dir="ltr" aria-label="אימייל">' +
                 '<input class="cw-hp" type="text" id="cwHoneypot" tabindex="-1" autocomplete="off">' +
                 '<button class="cw-lead-submit" id="cwLeadSubmit">שליחה</button>' +
             '</div>';

@@ -185,9 +185,33 @@
             .content { padding: 2rem 1rem; }
             table { font-size: 0.9rem; }
         }
+
+        /* ========== ACCESSIBILITY ========== */
+        .skip-nav {
+            position: absolute;
+            top: -100%;
+            right: 0;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            z-index: 10001;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.3s ease;
+        }
+        .skip-nav:focus {
+            top: 0;
+        }
+        *:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-nav">דלג לתוכן</a>
+
     <nav class="nav">
         <div class="nav-inner">
             <a href="/"><img src="../assets/logo-white.png" alt="חמ״ש" class="nav-logo"></a>
@@ -195,7 +219,7 @@
         </div>
     </nav>
 
-    <main class="content">
+    <main id="main-content" class="content">
         <h1>הצהרת נגישות</h1>
         <p class="last-updated">עודכן לאחרונה: פברואר 2026</p>
 
